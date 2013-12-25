@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  year: 2013-12-25
+  pages: 1
+  weight: 1.5
+  created_at: 2013-12-25
+  publisher_id: 
+
+two:
+  name: MyString
+  description: MyText
+  year: 2013-12-25
+  pages: 1
+  weight: 1.5
+  created_at: 2013-12-25
+  publisher_id: 
