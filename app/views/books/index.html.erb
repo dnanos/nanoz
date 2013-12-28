@@ -3,13 +3,9 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Year</th>
-      <th>Pages</th>
-      <th>Weight</th>
-      <th>Created at</th>
-      <th>Publisher</th>
+      <th>Название</th>
+      <th>Описание</th>
+      <th>Цена</th>
       <th></th>
       <th></th>
       <th></th>
@@ -21,11 +17,7 @@
       <tr>
         <td><%= book.name %></td>
         <td><%= book.description %></td>
-        <td><%= book.year %></td>
-        <td><%= book.pages %></td>
-        <td><%= book.weight %></td>
-        <td><%= book.created_at %></td>
-        <td><%= book.publisher.name %></td>
+        <td><%= book.price %></td>
         <td><%= link_to 'Show', book %></td>
         <td><%= link_to 'Edit', edit_book_path(book) %></td>
         <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>

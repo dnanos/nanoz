@@ -7,16 +7,27 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
 
-<%= yield %>
-
-<div>
-  <h1>Дисклеймер</h1>
-  <div> Данный сайт НЕ является интернет-магазином. <br/>
-    Это всего-лишь результат тестового задания по программированию.<br/>
-    Автор не несет ответственности и не предоставляет гарантий в связи с публикацией фактов, данных, результатов и другой информации.
+  <div id="user_nav">
+    <% if user_signed_in? %>
+      Signed in as <%= current_user.email %>. Not you?
+      <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+    <% else %>
+      <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+    <% end %>
   </div>
-</div>
+  
+  <%= yield %>
+
+  <div>
+    <h1>Дисклеймер</h1>
+    <div> Данный сайт НЕ является интернет-магазином. <br/>
+      Это всего-лишь результат выполнения тестового задания по программированию.<br/>
+      Автор не несет ответственности и не предоставляет гарантий в связи с публикацией фактов, данных, результатов и другой информации.
+    </div>
+  </div>
 
 </body>
 </html>
