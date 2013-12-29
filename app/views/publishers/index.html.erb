@@ -1,35 +1,44 @@
-<h1>Listing publishers</h1>
-
-<table>
+<%- model_class = Publisher -%>
+<div class="page-header">
+  <h1>Издательства</h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th>Подробнее</th>
+      <% if can? :update, @publishers %>
+        <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <% end %>
     </tr>
   </thead>
-
   <tbody>
     <% @publishers.each do |publisher| %>
       <tr>
         <td><%= publisher.name %></td>
-        <td><%= publisher.description %></td>
-        <td><%= link_to 'Show', publisher %></td>
-        <% if can? :update, publisher %>
-          <td><%= link_to 'Edit', edit_publisher_path(publisher) %></td>
-        <% end %>
-        <% if can? :destroy, publisher %>
-          <td><%= link_to 'Destroy', publisher, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
+        <td><%= publisher.description.first(100) + '...' %></td>
+        <td><%= link_to 'Полное описание', publisher_path(publisher) %></td>
+        <td>
+	  <% if can? :update, publisher %>
+	    <%= link_to t('.edit', :default => t("helpers.links.edit")),
+			edit_publisher_path(publisher), :class => 'btn btn-mini' %>
+	  <% end %>
+	  <% if can? :destroy, publisher %>
+	    <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+			publisher_path(publisher),
+			:method => :delete,
+			:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+			:class => 'btn btn-mini btn-danger' %>
+	  <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
 <% if can? :create, Publisher %>
-  <%= link_to 'New Publisher', new_publisher_path %>
+  <%= link_to t('.new', :default => t("helpers.links.new")),
+	      new_publisher_path,
+	      :class => 'btn btn-primary' %>
 <% end %>
