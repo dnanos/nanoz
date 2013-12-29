@@ -1,6 +1,5 @@
 class PublishersController < ApplicationController
   before_action :set_publisher, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, except: [:index, :show]
 
   # GET /publishers
   # GET /publishers.json
