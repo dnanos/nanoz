@@ -1,0 +1,10 @@
+<%- model_class = User -%>
+<div class="page-header">
+  <h1>Редактирование пользователя</h1>
+</div>
+
+<% if can? :update, @user %>
+  <%= render :partial => 'form' %>
+<% else %>
+  <div>Данная информация доступна только для администраторов сайта.</div>
+<% end %>

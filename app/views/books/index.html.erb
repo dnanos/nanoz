@@ -5,9 +5,9 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:description) %></th>
-      <th><%= model_class.human_attribute_name(:price) %></th>
+      <th>Наименование</th>
+      <th>Описание</th>
+      <th>Цена</th>
       <th>Подробнее</th>
       <% if can? :update, @books %>
         <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -17,7 +17,7 @@
   <tbody>
     <% @books.each do |book| %>
       <tr>
-        <td><%= book.name %></td>
+        <td><%= link_to book.name, book_path(book) %></td>
         <td><%= book.description.first(100) + '...' %></td>
         <td><%= book.price %></td>
         <td><%= link_to 'Полное описание', book_path(book) %></td>

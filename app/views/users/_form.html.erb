@@ -1,0 +1,22 @@
+<%= form_for @user, :html => { :class => 'form-horizontal' } do |f| %>
+
+  <dl class="dl-horizontal">
+    <dt><strong>Имя:</strong></dt>
+    <dd><%= @user.username %></dd><br/>
+    <dt><strong>Почта:</strong></dt>
+    <dd><%= @user.email %></dd>
+    <dt><strong>Роли:</strong></dt>
+      <% Role.all.each do |role|%>
+	<dd>
+	<%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
+	<%= role.name %>
+	</dd>
+      <% end %>  
+  </dl>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                users_path, :class => 'btn' %>
+  </div>
+<% end %>

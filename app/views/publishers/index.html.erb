@@ -5,8 +5,7 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th>Название</th>
       <th>Подробнее</th>
       <% if can? :update, @publishers %>
         <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -17,7 +16,6 @@
     <% @publishers.each do |publisher| %>
       <tr>
         <td><%= publisher.name %></td>
-        <td><%= publisher.description.first(100) + '...' %></td>
         <td><%= link_to 'Полное описание', publisher_path(publisher) %></td>
         <td>
 	  <% if can? :update, publisher %>
