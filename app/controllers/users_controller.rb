@@ -4,7 +4,6 @@ class UsersController < ApplicationController
     @users = User.all  #excludes(:id => current_user.id)
   end
 
-
   def show
     @user = User.find(params[:id])
   end
@@ -16,14 +15,16 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
   end
-
+  
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(params[:role_ids])
-      redirect_to @user, notice: "Настройки успешно обновлены."
-    else
-      render :edit
+    @user.roles = []
+    if !params[:user].nil?
+      if !params[:user][:role_ids].nil?
+	params[:user][:role_ids].each {|role_id| @user.add_role(Role.find(role_id).name)}  
+      end
     end
+    redirect_to @user, notice: 'Настройки успешно обновлены.'
   end
 
   def destroy
@@ -32,4 +33,10 @@ class UsersController < ApplicationController
       redirect_to users_path, notice: "Пользователь успешно удалён."
     end
   end
+  
+  
+  private  
+    def user_params
+      params.require(:user).permit(:role_ids)
+    end
 end

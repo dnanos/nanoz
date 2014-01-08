@@ -10,6 +10,10 @@ class BooksController < ApplicationController
   # GET /books/1
   # GET /books/1.json
   def show
+    @book = Book.find(params[:id])
+    @commentable = @book
+    @comments = @commentable.comments
+    @comment = Comment.new
   end
 
   # GET /books/new

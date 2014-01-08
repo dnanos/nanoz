@@ -76,7 +76,7 @@
                 <!-- <li class="nav-header">Пользователь</li> -->
 		  <div id="user_nav">
 		    <% if user_signed_in? %>
-		      Вы вошли в систему как <strong><%= current_user.email %></strong>. <br/>
+		      Вы вошли в систему как <strong><%= current_user.username %></strong>. <br/>
 		      <%= link_to 'Мои настройки', edit_user_registration_path %> |
 		      <%= link_to "Выйти", destroy_user_session_path, method: :delete %>
 		    <% else %>

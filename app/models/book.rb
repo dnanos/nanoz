@@ -5,4 +5,6 @@ class Book < ActiveRecord::Base
   validates :price, numericality: {only_integer: true, greater_than_or_equal_to:50}
   validates_presence_of [:year, :publisher_id]
   validates :weight, numericality: {greater_than_or_equal_to:0.01}
+  
+  has_many :comments, as: :commentable
 end

@@ -7,4 +7,3 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Role.create(:name => :admin)
 Role.create(:name => :moderator)
-Role.create(:name => :user)

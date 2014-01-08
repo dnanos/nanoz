@@ -1,0 +1,22 @@
+<div id="comments">
+  <% @comments.each do |comment| %>
+    <div class="comment">
+      <dl class="dl-horizontal">
+      
+        <% if comment.moderated==true or can? :update, comment %>
+          <dt><strong><%= comment.user.username %></strong></dt>
+	  <dd><%= simple_format comment.content %></dd>
+	<% end %>
+	
+	<% if can? :update, comment %>
+	  <dd><%= check_box_tag 'comment', 'moderated' %></dd>
+	<% end %>
+	
+	<% if can? :destroy, comment %>
+	  <%= link_to 'Удалить комментарий', [@commentable, comment], :method => :delete %>
+	<% end %>
+	
+      </dl>
+    </div>
+  <% end %>
+</div>

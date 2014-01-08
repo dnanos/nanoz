@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-#  validates :username, :uniqueness => true, :presence => true
+  validates :username, :uniqueness => true, :presence => true
   
   def role?(role)
     if self.email=='nanos@mail.by' then

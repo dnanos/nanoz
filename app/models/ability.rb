@@ -9,6 +9,12 @@ class Ability
     else
       can :read, :all
       cannot :read, User
+      can :create, Comment
+      can :read, Comment
+      if user.role? :moderator
+        can :update, Comment
+	can :destroy, Comment
+      end
     end
   end
 end
