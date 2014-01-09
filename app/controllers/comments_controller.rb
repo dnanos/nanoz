@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
     if @comment.save
-      redirect_to @commentable, notice: "Comment created."
+      redirect_to @commentable, notice: "Комментарий появится на сайте после проверки модератором"
     else
       render :new
     end
@@ -22,6 +22,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = @commentable.comments.find(params[:id])
     @comment.destroy
+    redirect_to @commentable, notice: "Комментарий удалён"
   end
   
   private

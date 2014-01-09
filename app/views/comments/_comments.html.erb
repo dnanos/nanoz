@@ -5,6 +5,7 @@
       
         <% if comment.moderated==true or can? :update, comment %>
           <dt><strong><%= comment.user.username %></strong></dt>
+          <dt><i><%= comment.created_at %></i></dt>
 	  <dd><%= simple_format comment.content %></dd>
 	<% end %>
 	

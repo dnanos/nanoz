@@ -6,7 +6,7 @@
   <thead>
     <tr>
       <th>Название</th>
-      <th>Подробнее</th>
+      <th>Описание</th>
       <% if can? :update, @publishers %>
         <th><%=t '.actions', :default => t("helpers.actions") %></th>
       <% end %>
@@ -15,8 +15,8 @@
   <tbody>
     <% @publishers.each do |publisher| %>
       <tr>
-        <td><%= publisher.name %></td>
-        <td><%= link_to 'Полное описание', publisher_path(publisher) %></td>
+        <td><%= link_to publisher.name, publisher_path(publisher) %></td>
+        <td><%= publisher.description.first(80) + '...' %></td>
         <td>
 	  <% if can? :update, publisher %>
 	    <%= link_to t('.edit', :default => t("helpers.links.edit")),
