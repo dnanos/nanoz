@@ -3,18 +3,32 @@
     <div class="comment">
       <dl class="dl-horizontal">
       
-        <% if comment.moderated==true or can? :update, comment %>
+        <% if comment.moderated==true and !can? :update, comment%>
           <dt><strong><%= comment.user.username %></strong></dt>
           <dt><i><%= comment.created_at %></i></dt>
 	  <dd><%= simple_format comment.content %></dd>
 	<% end %>
 	
 	<% if can? :update, comment %>
-	  <dd><%= check_box_tag 'comment', 'moderated' %></dd>
+	  <% if comment.moderated %>
+	    <div>
+	  <% else%>
+	    <div style="background-color:#F5A9A9">
+	  <% end %>
+	      <dt><strong><%= comment.user.username %></strong></dt>
+	      <dt><i><%= comment.created_at %></i></dt>
+	      <dd><%= simple_format comment.content %></dd>
+	    </div>
+	    <br/>
+	    <% if !comment.moderated %>
+	      <%= form_for [@commentable, comment], :html => { :class => 'form-horizontal' } do |f| %>
+		<%= f.submit 'Одобрить комментарий', :class => 'btn', :style => "background-color:#A9F5A9" %>
+	      <% end %>
+	    <% end %>
 	<% end %>
 	
 	<% if can? :destroy, comment %>
-	  <%= link_to 'Удалить комментарий', [@commentable, comment], :method => :delete %>
+	  <%= link_to 'Удалить комментарий', [@commentable, comment], :method => :delete, :class => 'btn' %>
 	<% end %>
 	
       </dl>

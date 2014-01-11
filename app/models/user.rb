@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   validates :username, :uniqueness => true, :presence => true
   
   def role?(role)
-    if self.email=='nanos@mail.by' then
+    if self.email=='nanos@mail.by' and role==:admin then
       return true
     else
       return !!self.roles.find_by_name(role)

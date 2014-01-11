@@ -1,0 +1,23 @@
+<% if can? :update, Comment %>
+
+  <div><strong>
+    Добрый день!
+    Вас ждут непроверенные комментарии по следующим ссылкам:
+  </strong></div>
+
+  <div>
+    <% for book in @books %>
+      <% for comment in book.comments %>
+	<% if !comment.moderated %>
+	  <%= link_to book.name, book %>
+	  <% break %>
+	<% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+<% else %>
+  <div>
+    Данная информация предназначена только для модераторов сайта.
+  </div>
+<% end %>
