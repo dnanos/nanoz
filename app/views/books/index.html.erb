@@ -22,9 +22,7 @@
         <td><%= link_to book.name, book_path(book) %></td>
         <td>
 	  <% for author in book.authors %>
-	    <% if !author.nil? %>
-	      <!-- link_to author.name, author_path(author) -->
-	    <% end %>
+	    <%= link_to author.name, author_path(author) %>
 	    <% if author != book.authors.last %>,<% end %>
 	  <% end %>
         </td>

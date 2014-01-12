@@ -6,6 +6,7 @@ Nanoz::Application.routes.draw do
   end
   resources :publishers
   resources :users
+  resources :authors
 
   get 'moderator' => 'admin#moderator'
   get 'admin' => 'admin#admin'
