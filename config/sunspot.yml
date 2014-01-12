@@ -1,0 +1,19 @@
+# Note: ENV['SOLR_URL'] and ENV['WEBSOLR_URL'] override any values here
+# The defaults are same as what's below  so you only need to override as desired.
+# Removed production since that should never be used in heroku.
+# See Sunspot::Rails::Configuration.solr_url
+
+development:
+  solr:
+    hostname: localhost
+    port: 8982
+    log_level: INFO
+    path: /solr/development
+
+test:
+  solr:
+    hostname: localhost
+    port: 8981
+    log_level: WARNING
+    path: /solr/test
+    
