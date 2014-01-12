@@ -21,3 +21,8 @@
 
 ru:
   hello: "Hello world"
+  number:
+    currency:
+      format:
+        format: "%n %u"
+        unit: "руб."

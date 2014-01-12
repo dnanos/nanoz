@@ -9,7 +9,9 @@ class Ability
     else
       can :read, :all
       cannot :read, User
-      can :create, Comment
+      if !user.username.nil?
+        can :create, Comment
+      end
       can :read, Comment
       if user.role? :moderator
         can :update, Comment

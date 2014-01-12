@@ -1,0 +1,20 @@
+<% if can? :manage, :all %>
+
+  <div><strong>
+    Добрый день!
+    Вы находитесь на странице администрирования.
+  </strong></div>
+  <br/>
+  
+  <table class="table table-striped">
+    <tbody>
+      <tr><td><%= link_to 'Редактировать пользователей', users_path %></td></tr>
+      <tr><td><%= link_to 'Модерировать комментарии', moderator_path %></td></tr>
+      <tr><td><%= link_to 'Добавить книгу', new_book_path %></td></tr>
+      <tr><td><%= link_to 'Добавить издательство', new_publisher_path %></td></tr>
+    </tbody>
+  </table>
+  
+<% else %>
+  <div><i>Данная информация предназначена только для администраторов сайта.</i></div>
+<% end %>

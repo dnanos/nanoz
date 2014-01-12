@@ -5,7 +5,7 @@
 
 <dl class="dl-horizontal">
   <dt><strong>Цена:</strong></dt>
-  <dd><%= @book.price %></dd>
+  <dd><%= number_to_currency(@book.price) %></dd>
   <dt><strong>Аннотация:</strong></dt>
   <dd><%= @book.description %></dd>
   <dt><strong>Год издания:</strong></dt>
@@ -17,6 +17,11 @@
   <dt><strong>Издательство:</strong></dt>
   <dd><%= link_to @book.publisher.name, @book.publisher %></dd>
 </dl>
+
+<h2>Комментарии</h2>
+
+<%= render "comments/comments" %>
+<%= render "comments/form" %>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
@@ -33,8 +38,3 @@
 		:class => 'btn btn-danger' %>
   <% end %>
 </div>
-
-<h2>Комментарии</h2>
-
-<%= render "comments/comments" %>
-<%= render "comments/form" %>

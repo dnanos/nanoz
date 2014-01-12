@@ -1,15 +1,19 @@
 <div id="comments">
   <% @comments.each do |comment| %>
-    <div class="comment">
-      <dl class="dl-horizontal">
       
-        <% if comment.moderated==true and !can? :update, comment%>
+    <% if comment.moderated==true and !can? :update, comment%>
+      <div class="comment">
+	<dl class="dl-horizontal">
           <dt><strong><%= comment.user.username %></strong></dt>
           <dt><i><%= comment.created_at %></i></dt>
 	  <dd><%= simple_format comment.content %></dd>
-	<% end %>
-	
-	<% if can? :update, comment %>
+	</dl>
+      </div>
+    <% end %>
+
+    <% if can? :update, comment %>
+      <div class="comment">
+	<dl class="dl-horizontal">
 	  <% if comment.moderated %>
 	    <div>
 	  <% else%>
@@ -25,13 +29,13 @@
 		<%= f.submit 'Одобрить комментарий', :class => 'btn', :style => "background-color:#A9F5A9" %>
 	      <% end %>
 	    <% end %>
-	<% end %>
-	
-	<% if can? :destroy, comment %>
-	  <%= link_to 'Удалить комментарий', [@commentable, comment], :method => :delete, :class => 'btn' %>
-	<% end %>
-	
-      </dl>
-    </div>
+	  </dl>
+	</div>
+      <% end %>
+
+      <% if can? :destroy, comment %>
+	<%= link_to 'Удалить комментарий', [@commentable, comment], :method => :delete, :class => 'btn' %>
+      <% end %>
+
   <% end %>
 </div>
