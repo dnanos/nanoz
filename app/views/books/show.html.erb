@@ -3,11 +3,16 @@
   <h1><%=t '.title', :default => @book.name %></h1>
 </div>
 
+<p><%= image_tag(@book.image_url) %></p>
+
 <dl class="dl-horizontal">
-  <dt><strong>Цена:</strong></dt>
-  <dd><%= number_to_currency(@book.price) %></dd>
-  <dt><strong>Аннотация:</strong></dt>
-  <dd><%= @book.description %></dd>
+  <dt><strong>Авторы:</strong></dt>
+  <dd>
+    <% for author in @book.authors %>
+      <%= link_to author.name, author_path(author) %>
+      <% if author != @book.authors.last %>,<% end %>
+    <% end %>
+  </dd>
   <dt><strong>Год издания:</strong></dt>
   <dd><%= @book.year %></dd>
   <dt><strong>Страниц:</strong></dt>
@@ -15,7 +20,11 @@
   <dt><strong>Вес:</strong></dt>
   <dd><%= @book.weight %></dd>
   <dt><strong>Издательство:</strong></dt>
-  <dd><%= link_to @book.publisher.name, @book.publisher %></dd>
+  <dd><%= link_to @book.publisher.name, @book.publisher %></dd>  
+  <dt><strong>Аннотация:</strong></dt>
+  <dd><%= @book.description %></dd>
+  <dt><strong>Цена:</strong></dt>
+  <dd><strong><%= number_to_currency(@book.price) %></strong></dd>
 </dl>
 
 <h2>Комментарии</h2>
@@ -24,8 +33,7 @@
 <%= render "comments/form" %>
 
 <div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              books_path, :class => 'btn'  %>
+  <%= link_to 'Вернуться к списку книг', books_path, :class => 'btn'  %>
   <% if can? :update, @book %>
     <%= link_to t('.edit', :default => t("helpers.links.edit")),
 		edit_book_path(@book), :class => 'btn' %>

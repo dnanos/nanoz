@@ -5,9 +5,10 @@
 <table class="table table-striped">
   <thead>
     <tr>
+      <th></th>
       <th>Наименование</th>
+      <th>Авторы</th>
       <th>Цена</th>
-      <th>Подробнее</th>
       <th></th>
       <% if can? :update, @books %>
         <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -17,9 +18,15 @@
   <tbody>
     <% @books.each do |book| %>
       <tr>
+        <td><%= link_to image_tag(book.image_url, class: 'list_image'), book_path(book) %></td>
         <td><%= link_to book.name, book_path(book) %></td>
+        <td>
+	  <% for author in book.authors %>
+	    <%= link_to author.name, author_path(author) %>
+	    <% if author != book.authors.last %>,<% end %>
+	  <% end %>
+        </td>
         <td><%= number_to_currency(book.price) %></td>
-        <td><%= link_to 'Полное описание', book_path(book) %></td>
         <td><%= book.comments.to_caption %></td>
         <td>
           <% if can? :update, book %>

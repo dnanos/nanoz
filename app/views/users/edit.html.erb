@@ -6,5 +6,9 @@
 <% if can? :update, @user %>
   <%= render :partial => 'form' %>
 <% else %>
-  <div>Данная информация доступна только для администраторов сайта.</div>
+  <div>
+    <i>
+      <%= t :admin_only %>
+    </i>
+  </div>
 <% end %>

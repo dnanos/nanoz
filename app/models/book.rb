@@ -7,4 +7,5 @@ class Book < ActiveRecord::Base
   validates :weight, numericality: {greater_than_or_equal_to:0.01}
   
   has_many :comments, as: :commentable
+  has_many :authors
 end
