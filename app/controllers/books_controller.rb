@@ -4,10 +4,7 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
-    @search = Book.search do
-      fulltext params[:search]
-    end
-    @books = @search.results
+    @books = Book.all.order(:name)
   end
 
   # GET /books/1
