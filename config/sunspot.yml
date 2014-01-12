@@ -1,11 +1,7 @@
-production:
-  solr:
-    hostname: index.websolr.com
-    port: 8983
-    log_level: WARNING
-#     path: /solr/production
-    # read_timeout: 2
-    # open_timeout: 0.5
+# Note: ENV['SOLR_URL'] and ENV['WEBSOLR_URL'] override any values here
+# The defaults are same as what's below  so you only need to override as desired.
+# Removed production since that should never be used in heroku.
+# See Sunspot::Rails::Configuration.solr_url
 
 development:
   solr:
