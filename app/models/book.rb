@@ -8,4 +8,9 @@ class Book < ActiveRecord::Base
   
   has_many :comments, as: :commentable
   has_many :authors
+  
+  
+  searchable do
+    text :name, :description
+  end
 end

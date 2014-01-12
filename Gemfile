@@ -14,6 +14,8 @@ gem 'rolify'
 gem "less-rails"
 gem 'twitter-bootstrap-rails'
 
+gem 'sunspot_rails'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
