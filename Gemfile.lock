@@ -65,15 +65,11 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.25.1)
-    mini_portile (0.5.2)
     minitest (4.7.5)
     multi_json (1.8.2)
-    nokogiri (1.6.1)
-      mini_portile (~> 0.5.0)
     orm_adapter (0.5.0)
     pg (0.17.1)
     polyglot (0.3.3)
-    pr_geohash (1.0.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -100,8 +96,6 @@ GEM
       json (~> 1.4)
     ref (1.0.5)
     rolify (3.2.0)
-    rsolr (1.0.9)
-      builder (>= 2.1.2)
     sass (3.2.13)
     sass-rails (4.0.1)
       railties (>= 4.0.0, < 5.0)
@@ -119,13 +113,6 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
-    sunspot (2.1.0)
-      pr_geohash (~> 1.0)
-      rsolr (~> 1.0.7)
-    sunspot_rails (2.1.0)
-      nokogiri
-      rails (>= 3)
-      sunspot (= 2.1.0)
     therubyracer (0.12.0)
       libv8 (~> 3.16.14.0)
       ref
@@ -166,7 +153,6 @@ DEPENDENCIES
   rolify
   sass-rails (~> 4.0.0)
   sdoc
-  sunspot_rails
   therubyracer
   turbolinks
   twitter-bootstrap-rails
